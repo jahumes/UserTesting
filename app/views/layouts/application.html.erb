@@ -13,7 +13,9 @@
   </head>
   <body>
     <%= render :partial => 'header' %>
-
+    <!-- Sidebar begins -->
+    <%= render :partial => 'sidebar' %>
+    <!-- Sidebar ends -->
     <!-- Content begins -->
     <div id="content">
       <div class="contentTop">
@@ -38,17 +40,7 @@
       <div class="breadLine">
         <div class="bc">
           <ul id="breadcrumbs" class="breadcrumbs">
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">UI elements</a>
-              <ul>
-                <li><a href="ui.html" title="">General elements</a></li>
-                <li><a href="ui_icons.html" title="">Icons</a></li>
-                <li><a href="ui_buttons.html" title="">Button sets</a></li>
-                <li><a href="ui_custom.html" title="">Custom elements</a></li>
-                <li><a href="ui_experimental.html" title="">Experimental</a></li>
-              </ul>
-            </li>
-            <li class="current"><a href="ui_grid.html" title="">Grid</a></li>
+            <%= render_navigation %>
           </ul>
         </div>
 

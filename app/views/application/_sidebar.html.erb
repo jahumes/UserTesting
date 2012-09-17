@@ -1,0 +1,42 @@
+<div id="sidebar">
+  <div class="mainNav">
+    <div class="user">
+      <a title="" class="leftUserDrop"><img src="/assets/user2.png" alt="" /></a><span><%= current_user.name %></span>
+      <ul class="leftUser">
+        <li><a href="#" title="" class="sProfile">My profile</a></li>
+        <!--<li><a href="#" title="" class="sMessages">Messages</a></li>-->
+        <li>
+          <%= link_to('Settings', edit_user_registration_path, :class => 'sSettings', :title => 'User Settings') %>
+        </li>
+        <li>
+          <%= link_to('Logout', destroy_user_session_path, :class => 'sLogout', :title => 'Logout') %>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Responsive nav -->
+    <div class="altNav">
+      <div class="userSearch">
+        <form action="">
+          <input type="text" placeholder="search..." name="userSearch" />
+          <input type="submit" value="" />
+        </form>
+      </div>
+
+      <!-- User nav -->
+      <ul class="userNav">
+        <li><a href="#" title="" class="profile"></a></li>
+        <li><a href="#" title="" class="messages"></a></li>
+        <li><a href="#" title="" class="settings"></a></li>
+        <li><a href="#" title="" class="logout"></a></li>
+      </ul>
+    </div>
+
+    <!-- Main nav -->
+    <%= render_navigation :renderer => :with_images, :context => :sidebar  %>
+  </div>
+
+
+  <div class="clear"></div>
+</div>
+</div>
