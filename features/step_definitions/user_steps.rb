@@ -39,15 +39,15 @@ def sign_up
 end
 
 def sign_in
-  visit '/users/sign_in'
-  fill_in "Email", :with => @visitor[:email]
-  fill_in "Password", :with => @visitor[:password]
-  click_button "Sign in"
+  visit '/'
+  fill_in "user_email", :with => @visitor[:email]
+  fill_in "user_password", :with => @visitor[:password]
+  click_button "Login"
 end
 
 ### GIVEN ###
 Given /^I am not logged in$/ do
-  visit '/users/sign_out'
+  visit '/logout'
 end
 
 Given /^I am logged in$/ do
@@ -140,8 +140,10 @@ Then /^I should be signed in$/ do
 end
 
 Then /^I should be signed out$/ do
-  page.should have_content "Sign up"
-  page.should have_content "Login"
+  page.should have_content "Remember me"
+  page.should have_selector "input.loginUsername"
+  page.should have_selector "input.loginPassword"
+  page.should have_selector "input[name=commit]"
   page.should_not have_content "Logout"
 end
 
@@ -179,6 +181,7 @@ end
 
 Then /^I see an invalid login message$/ do
   page.should have_content "Invalid email or password."
+  page.should have_selector "div.nFailure"
 end
 
 Then /^I should see an account edited message$/ do

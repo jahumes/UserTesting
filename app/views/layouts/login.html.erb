@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><%= content_for?(:title) ? yield(:title) : "Usertesting" %></title>
+  <meta name="description" content=""/>
+  <meta name="author" content=""/>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= render :partial => 'javascript_head' %>
+  <%= csrf_meta_tags %>
+  <%= yield(:head) %>
+</head>
+<body>
+<%= render :partial => 'header' %>
+<!-- Login wrapper begins -->
+<div class="loginWrapper">
+
+      <%= yield %>
+</div>
+<%= debug(params) if Rails.env.development? %>
+</body>
+</html>

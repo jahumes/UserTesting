@@ -1,0 +1,14 @@
+<% provide(:title, "Sebo Marketing Client Tracking App | Login") %>
+<!-- Current user form -->
+<%= form_for(resource, :as => resource_name, :id => 'login', :url => session_path(resource_name)) do |f| %>
+    <%= render 'layouts/messages' %>
+    <%= f.email_field :email, :placeholder => 'Your username', :class => 'loginUsername' %>
+    <%= f.password_field :password, :placeholder => 'Password', :class => 'loginPassword' %>
+
+    <div class="logControl">
+      <% if devise_mapping.rememberable? -%>
+          <div class="memory"><%= f.check_box :remember_me, :class => 'check', :id => 'remember2', :checked => true %> <%= f.label :remember_me %></div>
+      <% end -%>
+      <%= f.submit "Login", :class => 'buttonM bBlue' %>
+    </div>
+<% end %>

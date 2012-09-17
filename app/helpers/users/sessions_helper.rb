@@ -1,0 +1,3 @@
+module Users::SessionsHelper
+
+end
