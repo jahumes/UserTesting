@@ -6,7 +6,7 @@ gem "cancan", ">= 1.6.8"
 gem "rolify", ">= 3.2.0"
 gem 'jquery-rails'
 gem "thin", ">= 1.4.1"
-gem "simple-navigation", ">= 3.0.0"
+gem 'navigasmic'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
