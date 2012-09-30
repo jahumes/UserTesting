@@ -291,15 +291,15 @@ background: -ms-linear-gradient(top,  rgba(86,86,86,0.2) 0%,rgba(54,54,54,0.1) 1
 background: linear-gradient(top,  rgba(86,86,86,0.2) 0%,rgba(86,86,86,0.1) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33565656', endColorstr='#1a363636',GradientType=0 );
 }
-.nav li a:active, .nav li a.active {  
+.nav li a:active, .nav li.active a {  
 background: -moz-linear-gradient(top,  rgba(86,86,86,0.1) 0%, rgba(54,54,54,0.1) 100%);
 background: -webkit-linear-gradient(top,  rgba(120,120,120,0.2) 0%,rgba(120,120,120,0.3) 100%);
 background: -o-linear-gradient(top,  rgba(128,128,128,0.4) 0%,rgba(115,115,115,0.3) 100%);
 background: -ms-linear-gradient(top,  rgba(86,86,86,0.2) 0%,rgba(54,54,54,0.1) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33565656', endColorstr='#1a363636',GradientType=0 );
 }
-.nav li a.active { color: #f4f4f4;   }
-.nav li a.active img, .nav li a:hover img { opacity: 1; filter: alpha(opacity=100); -webkit-transition: opacity 0.3s ease-in-out; -moz-transition: opacity 0.3s ease-in-out; transition: opacity 0.3s ease-in-out; }
+.nav li.active a { color: #f4f4f4;   }
+.nav li.active a img, .nav li a:hover img { opacity: 1; filter: alpha(opacity=100); -webkit-transition: opacity 0.3s ease-in-out; -moz-transition: opacity 0.3s ease-in-out; transition: opacity 0.3s ease-in-out; }
 .nav > li > a:hover { color: #f4f4f4; -webkit-transition: all 0.3s ease-in-out; -moz-transition: all 0.3s ease-in-out; transition: all 0.3s ease-in-out; }
 
 .nav li:hover ul { display: block; }

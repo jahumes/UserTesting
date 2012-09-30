@@ -1,3 +1,6 @@
+require 'navigasmic/builders/images_builder'
+require 'navigasmic/builders/breadcrumbs_builder'
+
 Navigasmic.setup do |config|
 
   # Defining Navigation Structures:
@@ -30,9 +33,11 @@ Navigasmic.setup do |config|
   # Here's a basic example:
   config.semantic_navigation :primary do |n|
 
-    n.item 'Dashboard', n.root_path
+    n.item 'Dashboard', n.root_path, image: '/assets/icons/mainnav/dashboard.png'
 
-    n.item 'Users', controller: '/users', image: '/assets/icons/mainnav/dashboard.png'
+    n.item 'Users', controller: '/users', image: '/assets/icons/mainnav/ui.png' do
+      n.item 'Add New', '/users/new'
+    end
     # Groups and Items:
     #
     # You can create a structure using `group`, and `item`.  You can nest items inside groups or items.  In the
@@ -71,7 +76,11 @@ Navigasmic.setup do |config|
 
   end
 
-  config.semantic_navigation :sidebar do |sidebar|
+  config.semantic_navigation :breadcrumbs do |n|
+    n.item 'Dashboard', n.root_path, image: '/assets/icons/mainnav/dashboard.png' do
+      n.item 'Users', controller: '/users', image: '/assets/icons/mainnav/ui.png'
+    end
+
 
   end
 
@@ -80,7 +89,7 @@ Navigasmic.setup do |config|
   # By default the Navigasmic::Builder::ListBuilder is used unless otherwise specified.
   #
   # You can change this here:
-  config.default_builder = Navigasmic::Builder::ImagesBuilder
+  # config.default_builder = Navigasmic::Builder::ImagesBuilder
 
 
   # Configuring Builders:
@@ -89,10 +98,13 @@ Navigasmic.setup do |config|
   # want to change.
   #
   # Changing the default ListBuilder options:
-  config.builder Navigasmic::Builder::ListBuilder do |builder|
-    builder.wrapper_class = 'semantic-navigation'
-  end
+  # config.builder Navigasmic::Builder::ListBuilder do |builder|
+    # builder.wrapper_class = 'semantic-navigation'
+  # end
 
+  #config.builder Navigasmic::Builder::ImagesBuilder do |builder|
+  #  builder.wrapper_class = 'semantic-navigation'
+  #end
 
   # Naming Builder Configurations:
   #
@@ -101,12 +113,18 @@ Navigasmic.setup do |config|
   # option to the `semantic_navigation` view helper.
   #
 
-  config.builder with_images: Navigasmic::Builder::ListBuilder do |builder|
-     builder.link_generator = proc do |label, link, options, has_nested|
-        options.merge!(class: 'dropdown-toggle', data: {toggle: 'dropdown'})
-        link_to("<img url='#{}' />#{label}",link)
-     end
-  end
+  #config.builder :with_images => Navigasmic::Builder::ImagesBuilder do |builder|
+  #   builder.link_generator = proc do |label, link, options, has_nested|
+  #      if options[:image]
+  #        content = "<img src='#{options[:image]}' />".html_safe
+  #        content << label
+  #        link_to(content,link, options.delete(:link_html))
+  #      else
+  #        link_to(label, link, options.delete(:link_html))
+  #      end
+  #
+  #   end
+  #end
 
   # A Twitter Bootstrap configuration:
   #

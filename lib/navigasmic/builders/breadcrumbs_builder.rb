@@ -1,5 +1,5 @@
 module Navigasmic::Builder
-  class ImagesBuilder < Base
+  class BreadcrumbsBuilder < Base
     class Configuration < Base::Configuration
 
       attr_accessor :wrapper_class, :has_nested_class, :is_nested_class, :disabled_class, :highlighted_class
@@ -20,19 +20,10 @@ module Navigasmic::Builder
         @has_nested_class = 'has-nested'
         @is_nested_class = 'is-nested'
         @disabled_class = 'disabled'
-        @highlighted_class = 'active'
+        @highlighted_class = 'current'
 
         # generator callbacks
-        @link_generator = proc do |label, link, options, has_nested|
-          if options[:image]
-            content = "<img src='#{options[:image]}' />".html_safe
-            content << label
-            link_to(content,link, options.delete(:link_html))
-          else
-            link_to(label, link, options.delete(:link_html))
-          end
-
-        end
+        @link_generator = proc{ |label, link, options, is_nested| link_to(label, link, options.delete(:link_html)) }
         @label_generator = proc{ |label, is_linked, is_nested| "<span>#{label}</span>" }
 
         super
@@ -63,10 +54,15 @@ module Navigasmic::Builder
 
       item = Navigasmic::Item.new(self, label, extract_and_determine_link(label, options, *args), options)
 
-      merge_classes!(options, @config.disabled_class) if item.disabled?
-      merge_classes!(options, @config.highlighted_class) if item.highlights_on?(@context.request.path, @context.params)
+      if item.highlights_on?(@context.request.path, @context.params)
+        merge_classes!(options, @config.disabled_class) if item.disabled?
+        merge_classes!(options, @config.highlighted_class) if item.highlights_on?(@context.request.path, @context.params)
 
-      concat(structure_for(label, item.link? ? item.link : false, options, &block))
+        concat(structure_for(label, item.link? ? item.link : false, options, &block))
+      else
+        nil
+      end
+
     end
 
     private
