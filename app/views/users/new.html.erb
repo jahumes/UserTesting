@@ -15,5 +15,11 @@
     <div><%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation %></div>
 
+    <div>
+      <% @roles.each do |role| %>
+        <%= f.label role.name %> <%= f.check_box :roles %>
+      <% end %>
+    </div>
+
     <div><%= f.submit "Create User" %></div>
 <% end %>
