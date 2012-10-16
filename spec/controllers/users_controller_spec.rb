@@ -21,4 +21,8 @@ describe UsersController do
     
   end
 
+  describe "CREATE new user" do
+
+  end
+
 end

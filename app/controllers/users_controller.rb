@@ -13,23 +13,36 @@ class UsersController < ApplicationController
 
   def new
     @roles = Role.all
+    @user = User.new
+  end
+
+  def edit
+    @user = User.find(params[:id])
   end
 
   def create
 
-    @roles = params[:user].delete(:roles).split(",").map { |s| s.to_i }
+    if !params[:user][:role_ids].empty?
+      @roles = params[:user].delete(:role_ids).map { |s| s.to_i }
+    else
+      params[:user].delete(:role_ids)
+    end
 
     @user = User.new(params[:user])
     if @user.save
       if @roles
         @roles.each do |role|
           @role = Role.find_by_id(role)
-          @user.add_role @role.name
+          if !@role.nil?
+            @user.add_role @role.name
+          end
+
         end
       end
-      flash[:success] = "Welcome to the Sample App!"
+      flash[:success] = "User Successfully Created!"
       redirect_to @user
     else
+      flash[:error] = "Failed to Create User!"
       render 'new'
     end
   end

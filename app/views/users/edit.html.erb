@@ -5,7 +5,7 @@
     <div class="widget fluid">
 
       <div class="whead">
-        <h6>Add New User</h6>
+        <h6>Edit <%= @user.first_name %> <%= @user.last_name %></h6>
         <div class="clear"></div>
       </div>
 
@@ -14,7 +14,7 @@
       <div class="formRow">
         <div class="grid2">&nbsp;</div>
         <div class="grid10">
-          <%= f.button :submit, "Create User", :class => 'bGreen' %>
+          <%= f.button :submit, "Edit User", :class => 'bGreen' %>
         </div>
         <div class="clear"></div>
       </div>

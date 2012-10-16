@@ -29,7 +29,14 @@ module Navigasmic::Builder
             content << label
             link_to(content,link, options.delete(:link_html))
           else
-            link_to(label, link, options.delete(:link_html))
+            if options[:icon]
+              content = "<span class='#{options[:icon]}'></span>".html_safe
+              content << label
+              link_to(content, link, options.delete(:link_html))
+            else
+              link_to(label, link, options.delete(:link_html))
+            end
+
           end
 
         end
@@ -80,6 +87,7 @@ module Navigasmic::Builder
         content = content_tag(@config.group_tag, capture(&block), {class: @config.is_nested_class})
       end
       options.delete(:image)
+      options.delete(:icon)
       content_tag(@config.item_tag, "#{label}#{content}".html_safe, options)
     end
 

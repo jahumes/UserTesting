@@ -16,9 +16,12 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
+LogBuddy.init :logger => Logger.new('log/app_testing.log')
+
 module UserTesting
   class Application < Rails::Application
 
+    config.time_zone = 'Mountain Time (US & Canada)'
     # don't generate RSpec tests for views and helpers
     config.generators do |g|
       g.view_specs false

@@ -36,7 +36,7 @@ Navigasmic.setup do |config|
     n.item 'Dashboard', n.root_path, image: '/assets/icons/mainnav/dashboard.png'
 
     n.item 'Users', controller: '/users', image: '/assets/icons/mainnav/ui.png' do
-      n.item 'Add New', '/users/new'
+      n.item 'Add New', :action => :new
     end
     # Groups and Items:
     #

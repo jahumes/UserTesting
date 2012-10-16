@@ -380,7 +380,7 @@ $(function() {
 
 	//===== Chosen plugin =====//
 		
-	$(".select").chosen(); 
+    $("select.select").chosen();
 	
 	
 	//===== Autotabs. Inline data rows =====//

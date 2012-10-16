@@ -10,7 +10,7 @@
         </li>
         <li>
           <%= link_to('Logout', destroy_user_session_path, :class => 'sLogout', :title => 'Logout') %>
-        </li>
+        </li>                           s
       </ul>
     </div>
 
@@ -34,6 +34,15 @@
 
     <!-- Main nav -->
     <%= semantic_navigation :primary, class: 'nav', builder: Navigasmic::Builder::ImagesBuilder  %>
+  </div>
+
+  <div class="secNav">
+    <div class="secWrapper">
+        <%= semantic_navigation :primary, builder: Navigasmic::Builder::ImagesBuilder, class: 'subNav' do |n| %>
+            <% n.item 'All Users', :controller => '/users', :action => :index, :icon => 'icos-users2'  %>
+            <% n.item 'New User', :controller => '/users', :action => :new, :icon => 'icos-add'  %>
+        <% end %>
+    </div>
   </div>
 
 
