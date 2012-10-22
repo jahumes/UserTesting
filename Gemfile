@@ -5,7 +5,8 @@ gem "cancan", ">= 1.6.8"
 gem "rolify", ">= 3.2.0"
 gem 'jquery-rails'
 gem "thin", ">= 1.4.1"
-gem 'navigasmic'
+#gem 'navigasmic'
+gem 'simple-navigation'
 gem 'simple_form'
 gem 'country_select'
 gem 'validates_email_format_of', :git => 'git://github.com/alexdunae/validates_email_format_of.git'
