@@ -1,4 +1,5 @@
 UserTesting::Application.routes.draw do
+  match '/dashboard', to: 'dashboard#index'
 
   authenticated :user do
     root :to => redirect("/dashboard")

@@ -33,7 +33,7 @@
     </div>
 
     <!-- Main nav -->
-    <%= semantic_navigation :primary, class: 'nav', builder: Navigasmic::Builder::ImagesBuilder  %>
+    <%= render_navigation :renderer => :with_images, :context => :sidebar  %>
   </div>
 
 
