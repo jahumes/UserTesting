@@ -57,3 +57,5 @@
 //= require plugins/ui/jquery.easytabs.min
 //= require files/bootstrap
 //= require files/functions
+//= require_tree .
+

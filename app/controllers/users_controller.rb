@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
+  helper_method :sort_column, :sort_direction
   layout 'users'
 
   def index
     authorize! :index, @user, :message => 'Not authorized as an administrator.'
-    @users = User.all
+    @users = User.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
   end
 
   def show
@@ -47,4 +48,11 @@ class UsersController < ApplicationController
     end
   end
 
+  private
+    def sort_column
+      User.column_names.include?(params[:sort]) ? params[:sort] : "last_name"
+    end
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
 end

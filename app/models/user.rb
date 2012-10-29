@@ -17,6 +17,14 @@ class User < ActiveRecord::Base
   validates :email, :presence => true
   validates_email_format_of :email
 
+  def self.search(search)
+    if search
+      where('last_name LIKE ?', "#{search}")
+    else
+      scoped
+    end
+  end
+
   private
     def set_default_roles
       if Role.where(:name => 'normal').nil?
