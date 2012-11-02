@@ -11,6 +11,7 @@ gem 'simple_form'
 gem 'country_select'
 gem 'validates_email_format_of', :git => 'git://github.com/alexdunae/validates_email_format_of.git'
 gem 'will_paginate'
+gem 'pg'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -18,7 +19,7 @@ group :assets do
 end
 
 group :production do
-  gem 'pg', '0.12.2'
+  #gem 'pg', '0.12.2'
   gem 'sprockets', '~> 2.0'
 end
 
@@ -32,7 +33,7 @@ group :test do
 end
 
 group :development, :test do
-  gem 'sqlite3'
+  #gem 'sqlite3'
   gem 'rspec-rails', '>= 2.11.0'
   gem 'guard-rspec', '0.5.5'
   gem 'log_buddy'

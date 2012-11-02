@@ -12,7 +12,16 @@
   <tfoot>
   <tr>
     <td colspan="6">
-      <%= will_paginate @users %>
+      <div class="tPages">
+          <%= will_paginate @users,
+                            :renderer => PaginationListLinkRenderer,
+                            :next_label => "<span class='icon-arrow-17'></span>",
+                            :previous_label => "<span class='icon-arrow-14'></span>",
+                            :first_label => 'First',
+                            :last_label => 'Last',
+                            :class => 'pages'
+          %>
+      </div>
     </td>
   </tr>
   </tfoot>
@@ -21,7 +30,7 @@
       <tr>
         <td><input type="checkbox" name="checkRow" /></td>
         <td><a href="/assets/big.png" title="" class="lightbox"><img src="/assets/live/face1.png" alt="" /></a></td>
-        <td class="textL"><%= link_to user.first_name + ' ' + user.last_name, user %></td>
+        <td class="textL"><%= link_to user.last_name + ', ' + user.first_name, user %></td>
         <td><%= user.created_at.strftime("%b %d, %Y %I:%M:%S %p") %></td>
         <td class="fileInfo"><span><strong>Size:</strong> 215 Kb</span><span><strong>Format:</strong> .jpg</span></td>
         <td class="tableActs">

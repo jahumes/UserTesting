@@ -1,5 +1,5 @@
 $(function() {
-  $('#user-table').on('click','thead td a, .pagination a',function(event) {
+  $('#user-table').on('click','thead td a, .pages a',function(event) {
       $.getScript(this.href);
       event.preventDefault();
   });
