@@ -5,7 +5,7 @@
     <div class="whead">
       <span class="titleIcon"><input type="checkbox" id="titleCheck" name="titleCheck" /></span>
       <h6>Users</h6>
-      <%= form_tag users_path, :method => 'get' do %>
+      <%= form_tag users_path, :method => 'get', :id => 'user-search' do %>
           <%= hidden_field_tag :direction, params[:direction] %>
           <%= hidden_field_tag :sort, params[:sort] %>
           <p>
@@ -15,7 +15,7 @@
       <% end %>
       <div class="clear"></div>
     </div>
-    <div id="users">
+    <div id="user-table">
       <%= render :partial => 'users' %>
     </div>
 
