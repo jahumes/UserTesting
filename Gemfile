@@ -12,6 +12,7 @@ gem 'country_select'
 gem 'validates_email_format_of', :git => 'git://github.com/alexdunae/validates_email_format_of.git'
 gem 'will_paginate'
 gem 'pg'
+gem 'pg_search'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'

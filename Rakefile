@@ -4,4 +4,6 @@
 
 require File.expand_path('../config/application', __FILE__)
 
+load "pg_search/tasks.rb"
+
 UserTesting::Application.load_tasks

@@ -17,9 +17,16 @@ class User < ActiveRecord::Base
   validates :email, :presence => true
   validates_email_format_of :email
 
+  include PgSearch
+  pg_search_scope :search_by_full_name,
+                  :against => [:first_name, :last_name],
+                  :using => {
+                      :tsearch => {:prefix => true}
+                  }
+
   def self.search(search)
     if search
-      where('last_name LIKE ?', "#{search}")
+      self.search_by_full_name(search)
     else
       scoped
     end
