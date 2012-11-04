@@ -16,7 +16,7 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
-LogBuddy.init :logger => Logger.new('log/app_testing.log')
+#LogBuddy.init :logger => Logger.new('log/app_testing.log')
 
 module UserTesting
   class Application < Rails::Application
