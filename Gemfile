@@ -14,6 +14,7 @@ gem 'validates_email_format_of', :git => 'git://github.com/alexdunae/validates_e
 gem 'kaminari'
 gem 'pg'
 gem 'pg_search'
+gem 'faker'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -36,7 +37,7 @@ end
 
 group :development, :test do
   #gem 'sqlite3'
-  gem 'faker'
+
   gem 'rspec-rails', '>= 2.11.0'
   gem 'guard-rspec', '0.5.5'
   gem 'log_buddy'
