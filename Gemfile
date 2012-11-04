@@ -10,7 +10,8 @@ gem 'simple-navigation'
 gem 'simple_form'
 gem 'country_select'
 gem 'validates_email_format_of', :git => 'git://github.com/alexdunae/validates_email_format_of.git'
-gem 'will_paginate'
+#gem 'will_paginate'
+gem 'kaminari'
 gem 'pg'
 gem 'pg_search'
 group :assets do
@@ -35,6 +36,7 @@ end
 
 group :development, :test do
   #gem 'sqlite3'
+  gem 'faker'
   gem 'rspec-rails', '>= 2.11.0'
   gem 'guard-rspec', '0.5.5'
   gem 'log_buddy'

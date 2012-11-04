@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
                   }
 
   def self.search(search)
-    if search
+    if !search.blank? && search
       self.search_by_full_name(search)
     else
       scoped
@@ -34,8 +34,8 @@ class User < ActiveRecord::Base
 
   private
     def set_default_roles
-      if Role.where(:name => 'normal').nil?
-        self.roles << Role.where(:name => 'normal').first
+      if !Role.find_by_name('normal').nil?
+        self.roles << Role.find_by_name('normal')
       end
 
     end

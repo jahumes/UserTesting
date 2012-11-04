@@ -3,18 +3,44 @@
     <div class="whead">
       <span class="titleIcon"><input type="checkbox" id="titleCheck" name="titleCheck" /></span>
       <h6>Users</h6>
-      <%= form_tag users_path, :method => 'get', :id => 'user-search' do %>
-          <%= hidden_field_tag :direction, params[:direction] %>
-          <%= hidden_field_tag :sort, params[:sort] %>
-          <p>
-            <%= text_field_tag :search, params[:search] %>
-            <%= submit_tag "Search", :name => nil %>
-          </p>
-      <% end %>
+
       <div class="clear"></div>
     </div>
-    <div id="user-table">
-      <%= render :partial => 'users' %>
+    <div id="dyn" class="hiddenpaars">
+      <a class="tOptions act" title="Options">
+        <img alt="Options" src="/assets/icons/options" />
+      </a>
+      <div class="dataTables_wrapper">
+        <div class="tablePars">
+          <div class="dataTables_filter">
+            <%= form_tag users_path, :method => 'get', :id => 'user-search' do %>
+                <%= hidden_field_tag :direction, params[:direction] %>
+                <%= hidden_field_tag :sort, params[:sort] %>
+                <%= hidden_field_tag :per_page, params[:per_page], :id => 'search-per-page' %>
+                <label>
+                  <span>Search:</span>
+                  <%= text_field_tag :search, params[:search], :placeholder => 'Type to Search' %>
+                  <div class="srch"></div>
+                </label>
+            <% end %>
+          </div>
+          <div class="dataTables_length">
+            <%= form_tag users_path, :method => 'get', :id => 'user-per-page' do %>
+                <%= hidden_field_tag :direction, params[:direction] %>
+                <%= hidden_field_tag :sort, params[:sort] %>
+                <%= hidden_field_tag :search, params[:search], :id => 'per-page-search' %>
+                <label>
+                  <span>Search:</span>
+                  <%= select_tag :per_page, options_for_select([5,10,20,50,100]) %>
+                </label>
+            <% end %>
+          </div>
+        </div>
+        <div id="user-table">
+          <%= render :partial => 'users' %>
+        </div>
+      </div>
+
     </div>
 
   </div>

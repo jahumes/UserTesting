@@ -1686,7 +1686,10 @@ table thead td.headerSortDown span { background: url(/assets/tables/sortDown.png
 .tDefault tbody td, .tDefault thead td { border-left: 1px solid #DFDFDF; box-shadow: 0 1px 0 #fafafa inset; -webkit-box-shadow: 0 1px 0 #fafafa inset; -moz-box-shadow: 0 1px 0 #fafafa inset; }
 .tDefault tbody td:first-child, .tDefault thead td:first-child { border-left: none; }
 .checkAll thead td:first-child > img { vertical-align: middle; padding-bottom: 2px; }
-.tDefault thead td { text-align: center; font-size: 11px; padding: 3px 5px 2px 5px; color: #909090; background: #eee; }
+.tDefault thead td { text-align: center; font-size: 11px; padding: 3px 5px 2px 5px; color: #909090; background-color: #eee; }
+.tDefault thead td.sorting { cursor:pointer; background-image: url('/assets/tables/sort_both.png'); background-position: center right; }
+.tDefault thead td.sorting.asc { background-image: url('/assets/tables/sort_asc.png'); }
+.tDefault thead td.sorting.desc { background-image: url('/assets/tables/sort_desc.png'); }
 .tDefault tbody td { padding: 7px 11px; vertical-align: middle; }
 .tDefault tbody tr { border-top: 1px solid #DFDFDF; }
 .tDefault tbody tr:first-child { box-shadow: 0 1px 0px #fff inset; -webkit-box-shadow: 0 1px 0px #fff inset; -moz-box-shadow: 0 1px 0px #fff inset; }

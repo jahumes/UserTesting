@@ -5,7 +5,8 @@ class UsersController < ApplicationController
 
   def index
     authorize! :index, @user, :message => 'Not authorized as an administrator.'
-    @users = User.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
+    puts per_page
+    @users = User.search(params[:search]).order(sort_column + " " + sort_direction).page(params[:page]).per(per_page)
   end
 
   def show
@@ -54,5 +55,8 @@ class UsersController < ApplicationController
     end
     def sort_direction
       %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
+    def per_page
+      [5,10,20,50,100].include?(params[:per_page].to_f) ? params[:per_page] : 5
     end
 end

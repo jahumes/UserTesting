@@ -1,25 +1,20 @@
 <table cellpadding="0" cellspacing="0" width="100%" class="tDefault checkAll tMedia" id="checkAll">
   <thead>
-  <tr>
-    <td><img src="/assets/elements/other/tableArrows.png" alt="" /></td>
-    <td width="50">Image</td>
-    <td><%= sortable "last_name", 'Name (Last Name, First Name)' %></td>
-    <td width="130"><%= sortable "created_at" %></td>
-    <td width="120">File info</td>
-    <td width="100">Actions</td>
-  </tr>
+      <tr>
+        <td><img src="/assets/elements/other/tableArrows.png" alt="" /></td>
+        <td width="50">Image</td>
+        <%= sortable "last_name", :title => 'Name (Last Name, First Name)' %>
+        <%= sortable "created_at", :html_options => {:width => 130} %>
+        <td width="120">Roles</td>
+        <td width="100">Actions</td>
+      </tr>
   </thead>
   <tfoot>
   <tr>
     <td colspan="6">
       <div class="tPages">
-          <%= will_paginate @users,
-                            :renderer => PaginationListLinkRenderer,
-                            :next_label => "<span class='icon-arrow-17'></span>",
-                            :previous_label => "<span class='icon-arrow-14'></span>",
-                            :first_label => 'First',
-                            :last_label => 'Last',
-                            :class => 'pages'
+          <%= paginate @users,
+                       :theme => 'pagelist'
           %>
       </div>
     </td>
@@ -32,10 +27,20 @@
         <td><a href="/assets/big.png" title="" class="lightbox"><img src="/assets/live/face1.png" alt="" /></a></td>
         <td class="textL"><%= link_to user.last_name + ', ' + user.first_name, user %></td>
         <td><%= user.created_at.strftime("%b %d, %Y %I:%M:%S %p") %></td>
-        <td class="fileInfo"><span><strong>Size:</strong> 215 Kb</span><span><strong>Format:</strong> .jpg</span></td>
+        <td>
+          <ul>
+            <% user.roles.each do |role| %>
+                <li><%= role.name.titleize %></li>
+            <% end %>
+          </ul>
+        </td>
         <td class="tableActs">
-          <a href="#" class="tablectrl_small bDefault tipS" title="Edit"><span class="iconb" data-icon="&#xe1db;"></span></a>
-          <a href="#" class="tablectrl_small bDefault tipS" title="Remove"><span class="iconb" data-icon="&#xe136;"></span></a>
+          <%= link_to raw('<span class="iconb" data-icon="&#xe1db;"></span>'), edit_user_path(user), :title => 'Edit User', :class => 'tablectrl_small bDefault tipS' %>
+          <%= link_to raw('<span class="iconb" data-icon="&#xe136;"></span>'), users, :method => :delete,
+                                     data: { confirm: "Are you sure?" },
+                                     title: 'Remove ' + user.first_name + ' ' + user.last_name,
+                                     class: 'tablectrl_small bDefault tipS'
+          %>
           <a href="#" class="tablectrl_small bDefault tipS" title="Options"><span class="iconb" data-icon="&#xe1f7;"></span></a>
         </td>
       </tr>
