@@ -18,4 +18,7 @@ $(function() {
         $.get($("#user-per-page").attr('action'), $("#user-per-page").serialize(), null, "script");
         return false;
     });
+    $('.delete_user').on('ajax:success', function() {
+        $.getScript('/users');
+    });
 });

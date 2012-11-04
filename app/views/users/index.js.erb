@@ -1,1 +1,5 @@
 $("#user-table").html("<%= escape_javascript(render :partial => 'users') %>");
+
+$('.delete_user').on('ajax:success', function() {
+    $.getScript("<%= request.fullpath %>");
+});

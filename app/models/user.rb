@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   before_create :set_default_roles
   rolify
+
+  has_and_belongs_to_many :roles, :join_table => :users_roles
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -8,7 +11,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, :remember_me, :role_ids
 
   validates :first_name, :presence => true
   validates :last_name, :presence => true
