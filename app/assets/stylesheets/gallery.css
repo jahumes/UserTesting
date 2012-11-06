@@ -46,7 +46,11 @@
     left: 50%;
     margin-left: -56px;
     margin-top: -16px;
+    
     opacity: 0;
+    -moz-opacity: 0;
+    filter: alpha(opacity=0);
+
     -webkit-transition: opacity 250ms ease-in-out;
     -moz-transition: opacity 250ms ease-in-out;
     -ms-transition: opacity 250ms ease-in-out;
@@ -57,6 +61,8 @@
 .gallery > ul > li:hover .actions
 {
     opacity: 1;
+    -moz-opacity: 1;
+    filter: alpha(opacity=100);
 }
 
 .gallery > ul > li > .actions > a

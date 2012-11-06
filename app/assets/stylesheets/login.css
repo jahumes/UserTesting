@@ -17,7 +17,7 @@
 
 body
 {
-    background: #fafafa url(../images/layout/bg/retina_wood.png);
+    background: #fff url(../images/layout/bg/white_tiles.png);
     color: #444;
     padding: 100px 0;
 }
@@ -28,43 +28,28 @@ body
 #login-wrap
 {
     width: 278px;
-    background: url(../images/layout/login-wrap-bg.png);
+
+    background: #f2f2f2 repeat-x left bottom;
+    background-image: -ms-linear-gradient(top, #fafafa, #f2f2f2);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fafafa), to(#f2f2f2));
+    background-image: -webkit-linear-gradient(top, #fafafa, #f2f2f2);
+    background-image: -o-linear-gradient(top, #fafafa, #f2f2f2);
+    background-image: -moz-linear-gradient(top, #fafafa, #f2f2f2);
+    background-image: linear-gradient(top, #fafafa, #f2f2f2);
+
     margin: auto;
     position: relative;
-    border: 1px solid #000;
+    border: 1px solid #ccc;
     padding: 15px;
     padding-top: 60px;
-    -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    -moz-box-shadow: 0 0 6px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+
+    -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     border-radius: 6px;
-}
-
-/* Login Ribbon
-================================================== */
-
-#login-ribbon
-{
-    width: 73px;
-    height: 103px;
-    background: url(../images/layout/ribbon.png) no-repeat;
-    position: absolute;
-    right: 12px;
-    top: -5px;
-    text-align: center;
-    z-index: 10;
-}
-
-#login-ribbon [class^="icon-"]
-{
-    font-size: 30px;
-    text-align: center;
-    color: #fff;
-    top: 50%;
-    position: relative;
-    margin-top: -50%;
 }
 
 /* Login Buttons
@@ -74,26 +59,24 @@ body
 {
     position: absolute;
     top: 9px;
-    left: 15px;
+    left: 15px; right: 15px;
     z-index: 5;
+    text-align: center;
 }
 
 #login-buttons .btn-wrap
 {
-    border: 1px solid #000;
+    border: 1px solid #ddd;
     padding: 3px;
     display: inline-block;
     margin: 0 2px;
     *display: inline;
  /* IE7 inline-block hack */
     *zoom: 1;
-    -webkit-box-shadow: 0 0 5px #000, inset 0 1px 0 rgba(255, 255, 255, 0.15);
-    -moz-box-shadow: 0 0 5px #000, inset 0 1px 0 rgba(255, 255, 255, 0.15);
-    box-shadow: 0 0 5px #000, inset 0 1px 0 rgba(255, 255, 255, 0.15);
+
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
-    background: url(../images/layout/login-wrap-bg.png);
 }
 
 #login-buttons .btn-wrap.disabled
@@ -116,12 +99,12 @@ body
     line-height: 24px;
     width: 24px;
     height: 24px;
-    color: #fff;
+    color: #444;
 }
 
 #login-buttons .btn-wrap .btn:hover [class^="icon-"]
 {
-    color: #eee;
+    color: #666;
 }
 
 /* Login Inner
@@ -131,49 +114,12 @@ body
 {
     width: 278px;
     overflow: hidden;
-    border: 1px solid #000;
-    background: url(../images/layout/login-inner-bg.png);
+    border: 1px solid #ccc;
+    background-color: #fff;
+
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     border-radius: 6px;
-    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 1px 5px rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 1px 5px rgba(0, 0, 0, 0.5);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 1px 5px rgba(0, 0, 0, 0.5);
-}
-
-#login-inner.rotating.active
-{
-    -webkit-transition: height 0.8s ease-in-out;
-    -moz-transition: height 0.8s ease-in-out;
-    -ms-transition: height 0.8s ease-in-out;
-    -o-transition: height 0.8s ease-in-out;
-    transition: height 0.8s ease-in-out;
-}
-
-/* Login Circle
-================================================== */
-
-#login-inner #login-circle
-{
-    width: 1500px;
-    margin-left: -610px;
-    position: relative;
-    -webkit-border-radius: 750px;
-    -moz-border-radius: 750px;
-    border-radius: 750px;
-}
-
-#login-inner.rotating #login-circle
-{
-    height: 1500px;
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-transition: all 0.8s ease-in-out;
-    -moz-transition: all 0.8s ease-in-out;
-    -ms-transition: all 0.8s ease-in-out;
-    -o-transition: all 0.8s ease-in-out;
-    transition: all 0.8s ease-in-out;
 }
 
 /* Login Inner Forms
@@ -193,31 +139,11 @@ body
     display: block;
 }
 
-#login-inner.rotating #login-circle .login-inner-form
-{
-    display: block;
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-transform-origin: 140px 750px;
-    -moz-transform-origin: 140px 750px;
-    -ms-transform-origin: 140px 750px;
-    -o-transform-origin: 140px 750px;
-    transform-origin: 140px 750px;
-    position: absolute;
-}
-
 #login-circle .login-inner-form h1
 {
     font-size: 18px;
-    color: #fff;
     margin: 0 0 10px 4px;
     padding: 0 15px;
-}
-
-#login-circle .login-inner-form label
-{
-    color: #fff;
 }
 
 #login-circle .login-inner-form .control-group

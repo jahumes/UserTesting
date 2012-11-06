@@ -15,6 +15,12 @@
 /* < IE 9 should always display the wide version
 ================================================== */
 
+.lt-ie9 #wrapper, 
+.lt-ie9 #header
+{
+    min-width: 980px;
+}
+
 .lt-ie9 #header #header-right
 {
     margin-left: 274px;
@@ -28,12 +34,13 @@
 .lt-ie9 #wrapper
 {
     margin: 0 auto;
-    padding: 20px 20px 0 20px;
+    padding: 0;
 }
 
 .lt-ie9 #wrapper #sidebar
 {
-    width: 286px;
+    width: 285px;
+    padding-right: 1px;
 }
 
 .lt-ie9 #wrapper #main
@@ -61,34 +68,15 @@
 .lt-ie9 #wrapper #content.sidebar-minimized #content-inner
 {
     background-image: url(../images/layout/content-bg.png);
+    background-position: left top;
 }
-
-.lt-ie9 #wrapper #content.sidebar-minimized #sidebar-separator
-{
-    display: none;
-    background: none;
-}
-
 /* End Hidden Sidebar */
-
-.lt-ie9 #wrapper #content-wrap #content, 
-.lt-ie9 #wrapper #content-outer
-{
-    padding: 0 1px 1px;
-    border: 1px solid #bbb;
-}
 
 .lt-ie9 #wrapper #content-inner
 {
-    border: 1px solid #bbb;
     border-top: 0;
-    background-image: url(../images/layout/content-bg-gt1200.png);
+    background-image: url(../images/layout/content-bg-plain-gt1200.png);
     background-position: left top;
-}
-
-.lt-ie9 #wrapper #content-inner #sidebar-separator
-{
-    left: 266px;
 }
 
 .lt-ie9 #wrapper #sidebar #navigation > ul > li
@@ -116,18 +104,9 @@
     left: 70px;
 }
 
-.lt-ie9 #wrapper #sidebar #navigation .inner-nav li	a
+.lt-ie9 #wrapper #sidebar #navigation .inner-nav > li > a
 {
     padding: 12px 17px 12px 30px;
-}
-
-.lt-ie9 #wrapper #sidebar #navigation .inner-nav li.active > a, 
-.lt-ie9 #wrapper #sidebar #navigation .inner-nav li.active > span, 
-.lt-ie9 #wrapper #sidebar #navigation .inner-nav li:hover > a, 
-.lt-ie9 #wrapper #sidebar #navigation .inner-nav li:hover > span
-{
-    background-color: transparent;
-    background-image: url(../images/layout/ie-nav-hover.png);
 }
 
 .lt-ie9 #wrapper #sidebar #navigation
@@ -159,9 +138,14 @@
     padding: 0;
 }
 
-.lt-ie9 #wrapper.full #content, 
-.lt-ie9 #wrapper.full #content-outer, 
-.lt-ie9 #wrapper.full #content-inner
+.lt-ie9 #wrapper.full #header .navbar-inner .container
+{
+    max-width: none;
+}
+
+#wrapper.full #content-wrap #content, 
+#wrapper.full #content-outer, 
+#wrapper.full #content-inner
 {
     padding: 0;
     margin: 0;

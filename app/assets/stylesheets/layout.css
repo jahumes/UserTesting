@@ -27,7 +27,7 @@ screen < 767px
 
 body
 {
-    background: #fafafa url(../images/layout/bg/retina_wood.png);
+	background: url(../images/layout/bg/white_tiles.png);
     color: #444;
     padding: 0;
 }
@@ -37,7 +37,6 @@ body
     max-width: 1536px;
     min-width: 320px;
     margin: 0 auto;
-    padding: 5px 5px 0 5px;
 }
 
 #wrapper.no-header #header
@@ -47,7 +46,7 @@ body
 
 #wrapper.no-header #content-wrap
 {
-    padding: 10px 8px;
+    padding: 0;
     margin-top: 0;
 }
 
@@ -72,23 +71,32 @@ body
 
 #header
 {
-    margin: 0;
-    position: relative;
+	position: fixed;
+    margin: 0; top: 0;
+	right: 0; left: 0;
     z-index: 10;
 }
 
 #header .navbar-inner
 {
-    background: url(../images/layout/header-bg.png) left top repeat-x;
-    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-    border: 1px solid #323232;
-    border-width: 1px 0;
-    -webkit-border-radius: 8px 8px 3px 3px;
-    -moz-border-radius: 8px 8px 3px 3px;
-    border-radius: 8px 8px 3px 3px;
+    background: #262626 repeat-x left bottom;
+    background-image: -ms-linear-gradient(top, #333333, #262626);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#333333), to(#262626));
+    background-image: -webkit-linear-gradient(top, #333333, #262626);
+    background-image: -o-linear-gradient(top, #333333, #262626);
+    background-image: -moz-linear-gradient(top, #333333, #262626);
+    background-image: linear-gradient(top, #333333, #262626);
+    border: 1px solid #000;
+
+    filter: none;
+
     -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
     -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
 }
 
 #header .navbar-inner, 
@@ -96,6 +104,12 @@ body
 #header #header-right
 {
     max-height: 67px;
+}
+
+#header .navbar-inner .container
+{
+	max-width: 1536px;
+	width: auto;
 }
 
 #header #header-right
@@ -145,14 +159,23 @@ body
 
 #header #dropdown-lists .item, 
 #header #header-search #search-toggle, 
-#header #header-right #nav-toggle
+#header #header-right #nav-toggle, 
+#header #header-functions #logout-ribbon
 {
     color: #fff;
     margin-right: 10px;
-    background-image: url(../images/layout/linen.png);
-    border: 1px solid #151515;
+
+    background: #262626 repeat-x left bottom;
+    background-image: -ms-linear-gradient(top, #333333, #262626);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#333333), to(#262626));
+    background-image: -webkit-linear-gradient(top, #333333, #262626);
+    background-image: -o-linear-gradient(top, #333333, #262626);
+    background-image: -moz-linear-gradient(top, #333333, #262626);
+    background-image: linear-gradient(top, #333333, #262626);
+    border: 1px solid #000;
+
     -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
@@ -161,8 +184,11 @@ body
 
 #header #dropdown-lists .item:active, 
 #header #header-search.open #search-toggle, 
-#header #header-right #nav-toggle:not(.collapsed)
+#header #header-right #nav-toggle:not(.collapsed), 
+#header #header-functions #logout-ribbon:active
 {
+	background: #222;
+
     -webkit-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.25);
     -moz-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.25);
     box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.25);
@@ -428,52 +454,21 @@ body
 
 #header #header-functions #logout-ribbon
 {
-    background: url(../images/layout/ribbon.png) no-repeat center top;
-    width: 75px;
-    height: 100px;
     float: left;
-    text-align: center;
-    margin-top: -5px;
+    position: relative;
+    margin: 12px 0 0 8px;
+    cursor: pointer;
 }
 
 #header #header-functions #logout-ribbon a
 {
-    line-height: 1;
-    display: inline-block;
+	color: #fff;
     width: 38px;
     height: 38px;
+    font-size: 21px;
+    text-align: center;
     line-height: 38px;
-    color: #fff;
-    font-size: 0;
-    margin-top: 18px;
-    border: 1px solid transparent;
-    -webkit-border-radius: 500px;
-    -moz-border-radius: 500px;
-    border-radius: 500px;
-}
-
-#header #header-functions #logout-ribbon a [class^="icon-"]
-{
-    font-size: 24px;
-    line-height: 1;
-}
-
-#header #header-functions #logout-ribbon a:hover
-{
-    border-color: #880000;
-    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
-}
-
-#header #header-functions #logout-ribbon a:active
-{
-    background-color: #900000;
-    border-color: #800000;
-    margin-top: 19px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.15), 0 1px 0 rgba(255, 255, 255, 0.2);
-    -moz-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.15), 0 1px 0 rgba(255, 255, 255, 0.2);
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.15), 0 1px 0 rgba(255, 255, 255, 0.2);
+    display: block;
 }
 
 /* Content Wrapper
@@ -481,16 +476,9 @@ body
 
 #wrapper #content-wrap
 {
-    background: url(../images/layout/book-cover.png) #f6f6f6;
-    padding: 69px 8px 10px 8px;
-    margin-top: -69px;
-    border: 1px solid #444;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    border-radius: 8px;
-    -webkit-box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.35), 0 0 6px rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.35), 0 0 6px rgba(0, 0, 0, 0.5);
-    box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.35), 0 0 6px rgba(0, 0, 0, 0.5);
+    padding: 68px 0 0 0;
+    border: solid #ddd;
+    border-width: 0 1px;
 }
 
 #wrapper #content, 
@@ -498,40 +486,28 @@ body
 #wrapper #content-inner
 {
     border-top: 0 !important;
-    -webkit-border-radius: 0 0 3px 3px;
-    -moz-border-radius: 0 0 3px 3px;
-    border-radius: 0 0 3px 3px;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
 }
 
 #wrapper #content-wrap #content
 {
-    background-color: #fff;
     position: relative;
 }
 
 #wrapper #content-outer
 {
     position: relative;
-    background: #fefefe url(../images/layout/grids.png);
+    background: #fff;
 }
 
 #wrapper #content-inner
 {
     position: relative;
-    background-image: url(../images/layout/content-bg.png);
+    background-image: url(../images/layout/content-bg-plain.png);
     background-position: -25px top;
     background-repeat: repeat-y;
-}
-
-#wrapper #content #sidebar-separator
-{
-    width: 40px;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 206px;
-    z-index: 7;
-    background: url(../images/layout/book-fold.png) repeat-y left top;
 }
 
 /* Sidebar
@@ -540,7 +516,8 @@ body
 #wrapper #sidebar
 {
     float: left;
-    width: 226px;
+    width: 225px;
+    padding-right: 1px;
     z-index: 6;
     position: relative;
 }
@@ -644,17 +621,18 @@ body
 #wrapper #content.sidebar-minimized #sidebar
 {
     width: 45px;
+    padding-right: 0;
     overflow: hidden;
+}
+
+#wrapper #content.sidebar-minimized #content-inner
+{
+	background-image: url(../images/layout/content-bg.png);
 }
 
 #wrapper #content.sidebar-minimized #sidebar #navigation > ul
 {
     min-height: 0 !important;
-}
-
-#wrapper #content.sidebar-minimized #sidebar-separator
-{
-    display: none;
 }
 
 #wrapper #content.sidebar-minimized #main
@@ -744,6 +722,17 @@ body
     margin: 0;
 }
 
+#wrapper #sidebar #navigation .inner-nav
+{
+	border-bottom: 1px solid #fff;
+}
+
+#wrapper #sidebar #navigation .inner-nav > li:first-child > a, 
+#wrapper #sidebar #navigation .inner-nav > li:first-child > span
+{
+	border-top: 0;
+}
+
 #wrapper #sidebar #navigation .inner-nav > li > a, 
 #wrapper #sidebar #navigation .inner-nav > li > span
 {
@@ -752,7 +741,8 @@ body
     display: block;
     font-size: 11px;
     padding: 12px 17px 12px 5px;
-    border-bottom: 1px solid #bae0f2;
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #fff;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -763,8 +753,14 @@ body
 #wrapper #sidebar #navigation .inner-nav > li:hover > a, 
 #wrapper #sidebar #navigation .inner-nav > li:hover > span
 {
-    background-color: rgba(148, 219, 255, 0.2);
+    background-color: #fff;
     color: #444;
+}
+
+#wrapper #sidebar #navigation .inner-nav > li.active > a, 
+#wrapper #sidebar #navigation .inner-nav > li.active > span
+{
+	margin-right: -1px;
 }
 
 #wrapper #sidebar #navigation .inner-nav > li > a [class^="icon-"], 
@@ -796,9 +792,9 @@ body
 
 #wrapper #main #main-header
 {
-    margin-top: 0;
     padding-bottom: 4px;
     border-bottom: 0;
+    margin: 0 40px 27px 40px;
 }
 
 #wrapper #main #main-header h1
@@ -806,7 +802,7 @@ body
     font-size: 24px;
     color: #444;
     margin: 0;
-    padding: 20px 40px;
+    padding: 20px 0;
     text-shadow: -1px -1px #f0f0f0;
 }
 
@@ -834,7 +830,7 @@ body
     border-radius: 0;
     border: 0;
     margin: 0;
-    padding: 8px 40px;
+    padding: 8px 0;
     font-size: 11px;
     line-height: 16px;
 }
@@ -873,6 +869,11 @@ body
     padding: 0;
 }
 
+#wrapper.full #header .navbar-inner .container
+{
+    max-width: none;
+}
+
 #wrapper.full #header .navbar-inner, 
 #wrapper.full #content, 
 #wrapper.full #content-wrap, 
@@ -908,6 +909,7 @@ body
     color: #444;
     font-size: 11px;
     line-height: 2;
+    border-top: 1px solid #ddd;
     *zoom: 1;
 }
 
@@ -945,7 +947,6 @@ body
 
 @media (min-width: 1281px)
 {
-
     #header #header-right
     {
         margin-left: 274px;
@@ -959,12 +960,13 @@ body
     #wrapper
     {
         margin: 0 auto;
-        padding: 20px 20px 0 20px;
+        padding: 0;
     }
 
     #wrapper #sidebar
     {
-        width: 286px;
+        width: 285px;
+        padding-right: 1px;
     }
 
     #wrapper #main
@@ -992,27 +994,15 @@ body
     #wrapper #content.sidebar-minimized #content-inner
     {
         background-image: url(../images/layout/content-bg.png);
+        background-position: left top;
     }
 	/* End Hidden Sidebar */
 
-    #wrapper #content-wrap #content, 
-	#wrapper #content-outer
-    {
-        padding: 0 1px 1px;
-        border: 1px solid #bbb;
-    }
-
     #wrapper #content-inner
     {
-        border: 1px solid #ccc;
         border-top: 0;
-        background-image: url(../images/layout/content-bg-gt1200.png);
+        background-image: url(../images/layout/content-bg-plain-gt1200.png);
         background-position: left top;
-    }
-
-    #wrapper #content #sidebar-separator
-    {
-        left: 266px;
     }
 
     #wrapper #sidebar #navigation > ul > li
@@ -1089,6 +1079,11 @@ body
         border: 0;
     }
 
+	#wrapper #content #content-inner
+	{
+		background-image: url(../images/layout/content-bg.png);
+	}
+
     #wrapper #content, 
 	#wrapper #content-wrap, 
 	#wrapper #content-outer, 
@@ -1103,6 +1098,7 @@ body
 	#wrapper #content.sidebar-minimized #sidebar
     {
         width: 45px;
+        padding-right: 0;
         overflow: visible;
     }
 
@@ -1130,6 +1126,14 @@ body
     #wrapper #sidebar #navigation > ul > li.active > .inner-nav
     {
         display: none;
+    }
+
+    #wrapper #sidebar #navigation > ul > li > .inner-nav > li.active > a, 
+    #wrapper #sidebar #navigation > ul > li > .inner-nav > li.active > span, 
+    #wrapper #sidebar #navigation > ul > li > .inner-nav > li:hover > a, 
+    #wrapper #sidebar #navigation > ul > li > .inner-nav > li:hover > span
+    {
+        background-color: rgba(148, 219, 255, 0.2);
     }
 
     #wrapper #main #main-header .breadcrumb, 
@@ -1232,6 +1236,7 @@ body
         display: none;
         position: relative;
         z-index: 11;
+        background-color: #222;
     }
 
     #header #header-search #search-toggle, 
@@ -1258,7 +1263,6 @@ body
         left: 0;
         margin: 9px 0 0 0;
         padding: 10px;
-        background-image: url(../images/layout/linen.png);
         -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
         -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
@@ -1290,7 +1294,8 @@ body
 {
     #header
     {
-        background-image: url(../images/layout/linen.png);
+    	position: static;
+    	left: auto; right: auto; top: auto;
     }
 
     #header #header-right
@@ -1361,6 +1366,11 @@ body
         display: block;
     }
 
+    #wrapper #content-wrap
+    {
+    	margin-top: -69px;
+    }
+
     #wrapper #content #main, 
 	#wrapper #content.sidebar-minimized #main
     {
@@ -1375,12 +1385,19 @@ body
         width: 100%;
         float: none;
         display: block;
-        border-top: 1px solid #222;
+        border-top: 1px solid #111;
         padding-bottom: 8px;
-        background-image: url(../images/layout/linen.png);
+        
+	    background-color: #222;
+
         -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 2px rgba(0, 0, 0, 0.25);
         -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 2px rgba(0, 0, 0, 0.25);
         box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 2px rgba(0, 0, 0, 0.25);
+    }
+
+    #wrapper #sidebar
+    {
+    	padding-right: 0;
     }
 
     #wrapper #sidebar #navigation
@@ -1388,20 +1405,21 @@ body
         height: 0;
         overflow: hidden;
         width: 100%;
-        background: url(../images/layout/linen.png);
     }
 
     #wrapper #sidebar #navigation > ul
     {
-        border-bottom: 1px solid #4f4f4f;
+        border-bottom: 1px solid #333;
     }
 
     #wrapper #sidebar #navigation > ul > li
     {
         width: auto;
         max-width: none;
-        border-top: 1px solid #4f4f4f;
-        border-bottom: 1px solid #222;
+        border-top: 1px solid #333;
+        border-bottom: 1px solid #111;
+
+	    background-color: #222;
     }
 
     #wrapper #sidebar #navigation > ul > li > span, 
@@ -1461,6 +1479,8 @@ body
     #wrapper #sidebar #navigation > ul > li.open > .inner-nav
     {
         display: block;
+        border-bottom: 0;
+        border-top: 1px solid #111;
     }
 
     #wrapper #sidebar #navigation > ul > li > .inner-nav > li.active > a, 
@@ -1472,7 +1492,7 @@ body
 
     #wrapper #sidebar #navigation > ul > li > .inner-nav > li
     {
-        background-color: rgba(68, 68, 68, 0.75);
+        background-color: rgba(255, 255, 255, 0.05);
     }
 
     #wrapper #sidebar #navigation > ul > li > .inner-nav li:hover > a, 
@@ -1498,7 +1518,7 @@ body
 
     #wrapper #main #main-header
     {
-        margin-bottom: 30px;
+        margin: 0 0 30px 0;
     }
 
     #wrapper #main #main-header .breadcrumb, 

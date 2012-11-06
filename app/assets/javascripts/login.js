@@ -19,22 +19,6 @@
 
 		init: function() {
 			this.transitionFn = this['_fade'];
-			$( '#login-inner .login-inner-form' ).removeClass( 'active' );
-			
-			var firstInnerForm = $( '#login-inner .login-inner-form:first' ).addClass('active');
-
-			if(this._support( 'Transform', 'TransformOrigin', 'Transition' )) {
-
-				$( '#login-inner' )
-					.addClass('rotating')
-					.css( 'height', firstInnerForm.outerHeight() )
-					.find('.login-inner-form').each($.proxy(function(i, form) {
-						$( form ).not( firstInnerForm ).find( ':input' ).attr('tabIndex', -1);
-						this._addRotation( form, parseInt($(form).data('angle'), 10) );
-					}, this));
-
-				this.transitionFn = this['_rotate'];
-			}
 
 			$( '#login-buttons .btn' ).each($.proxy(function(i, btn) {
 				var target = $($(btn).data( 'target' ));
@@ -60,55 +44,11 @@
 			e.preventDefault();
 		}, 
 
-		_rotate: function(target) {
-			$( '#login-inner' )
-				.addClass( 'active' )
-				.find( '.login-inner-form' )
-				.removeClass( 'active' )
-				.find( ':input' )
-				.attr('tabindex', -1);
-
-			target
-				.find( ':input' )
-				.removeAttr( 'tabIndex' );
-
-			if((h = target.addClass( 'active' ).outerHeight()) !== $( '#login-inner' ).height()) {
-				$( '#login-inner' ).css({ height: h });
-			}
-
-			this._addRotation( '#login-circle', -parseInt(target.data('angle'), 10) );
-		}, 
-
 		_fade: function(target) {
 			$( '.login-inner-form.active' ).fadeOut( 'normal', function() {
 				target.addClass( 'active' ).fadeIn();
 				$(this).removeClass( 'active' );
 			});
-		},  
-
-		_addRotation: function( el, deg ) {
-			var r = 'rotate(' + deg + 'deg)';
-			$(el).css({ '-webkit-transform': r, '-moz-transform': r, '-ms-transform': r, '-o-transform': r, 'transform': r });
-		}, 
-
-		_support: function() {
-			var vendorPrefixes = "O Ms Webkit Moz".split( ' ' ),	
-				i = vendorPrefixes.length, support = true, 
-				divStyle = document.createElement('div').style;
-
-			while( i-- ) {
-				for(var a = 0, support = true; a < arguments.length; a++) {
-					support = (vendorPrefixes[ i ] + arguments[ a ] in divStyle);
-				}
-
-				if( support ) return true;
-			}
-
-			return false;
-		}, 
-
-		show: function( target ) {
-			target.is( '.login-inner-form' ) && this.transitionFn.call(this, target);
 		}
 	};
 
