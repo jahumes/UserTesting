@@ -1,5 +1,5 @@
 <!-- Current user form -->
-  <%= form_for(resource, :as => resource_name, :id => 'login', :url => session_path(resource_name)) do |f| %>
+  <%= simple_form_for(resource, :as => resource_name, :id => 'login', :url => session_path(resource_name)) do |f| %>
 
     <%= f.email_field :email, :placeholder => 'Your username', :class => 'loginUsername' %>
     <%= f.password_field :password, :placeholder => 'Password', :class => 'loginPassword' %>

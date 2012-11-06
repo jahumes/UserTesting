@@ -4,6 +4,15 @@ GIT
   specs:
     validates_email_format_of (1.5.3)
 
+GIT
+  remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
+  revision: 36060be332ffc8408daca5cee20ea5694261105b
+  branch: static
+  specs:
+    twitter-bootstrap-rails (2.0.7)
+      actionpack (>= 3.1)
+      railties (>= 3.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -260,5 +269,6 @@ DEPENDENCIES
   sprockets (~> 2.0)
   therubyracer (>= 0.10.2)
   thin (>= 1.4.1)
+  twitter-bootstrap-rails!
   uglifier (>= 1.0.3)
   validates_email_format_of!

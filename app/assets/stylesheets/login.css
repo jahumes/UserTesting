@@ -17,7 +17,7 @@
 
 body
 {
-    background: #fff url(../images/layout/bg/white_tiles.png);
+    background: #fff url(/assets/layout/bg/white_tiles.png);
     color: #444;
     padding: 100px 0;
 }
@@ -197,7 +197,7 @@ body
 
 #login-circle .login-inner-form input#input-username
 {
-    background-image: url(../images/icons/led/src/user.png);
+    background-image: url(/assets/icons/led/src/user.png);
     border-bottom: none;
     -webkit-border-radius: 6px 6px 0 0;
     -moz-border-radius: 6px 6px 0 0;
@@ -206,7 +206,7 @@ body
 
 #login-circle .login-inner-form input#input-password
 {
-    background-image: url(../images/icons/led/src/key.png);
+    background-image: url(/assets/icons/led/src/key.png);
     border-top: 1px solid #ddd;
     -webkit-border-radius: 0 0 6px 6px;
     -moz-border-radius: 0 0 6px 6px;
