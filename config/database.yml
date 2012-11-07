@@ -8,16 +8,16 @@ development:
   encoding: unicode
   database: sebo_development
   pool: 5
-  username: postgres
-  password: please
+  username: anthony
+  password:
 
 test: &test
   adapter: postgresql
   encoding: unicode
   database: sebo_test
   pool: 5
-  username: postgres
-  password: please
+  username: anthony
+  password:
 
 production:
   adapter: postgresql

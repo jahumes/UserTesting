@@ -7,71 +7,40 @@
 # The id can also be explicitely specified by setting the id in the html-options of the 'item' method in the config/navigation.rb file.
 class CustomBreadcrumbs < SimpleNavigation::Renderer::Base
   def render(item_container)
-    if !options[:sub]
-      list_content = li_tags(item_container).join
-      if skip_if_empty? && item_container.empty?
-        ''
-      else
-        content_tag((options[:ordered] ? :ol : :ul), list_content, {:id => container_id(item_container), :class => container_class(item_container)})
-      end
+
+    list_content = content_tag(:li, content_tag(:i, nil, :class => 'icon-home') + 'Sebo Marketing' + content_tag(:span,'&raquo;',:class => 'divider')) << li_tags(item_container).join.html_safe
+    d { list_content }
+    if skip_if_empty? && item_container.empty?
+      ''
     else
-      list_content = li_tags_sub(item_container).join
-      if skip_if_empty? && item_container.empty?
-        ''
-      else
-        content_tag((options[:ordered] ? :ol : :ul), list_content)
-      end
+      content_tag((options[:ordered] ? :ol : :ul), list_content, {:id => container_id(item_container), :class => container_class(item_container)})
     end
 
   end
 
   def li_tags(item_container)
-    i = 0
+
     item_container.items.inject([]) do |list, item|
-      if item.name == 'Dashboard' || item.selected?
+
+      if item.selected?
+
         icon = item.html_options[:icon]
         li_options = item.html_options.reject {|k, v| k == :link || k == :image || k == :icon}
 
-        if icon
-          li_icon = content_tag :span, nil, :class => icon
-          li_content = tag_for(item,li_icon)
-        else
-          li_content = tag_for(item,nil)
-        end
+        li_content = tag_for(item,nil)
+
+
 
         if include_sub_navigation?(item)
-          li_content << render_sub_navigation_for(item)
-        end
-
-        list << content_tag(:li, li_content, li_options) if item.name == 'Dashboard' || item.selected?
-
-        if include_sub_navigation?(item)
+          li_content << content_tag(:span,'&raquo',:class => 'divider')
+          list << content_tag(:li, li_content, li_options)
           list.concat li_tags(item.sub_navigation)
+        else
+          list << content_tag(:li, li_content, li_options)
         end
       end
       list
     end
-  end
-
-  def li_tags_sub(item_container)
-    item_container.items.inject([]) do |list, item|
-      icon = item.html_options[:icon]
-      li_options = item.html_options.reject {|k, v| k == :link || k == :image || k == :icon}
-
-      if icon
-        li_icon = content_tag :span, nil, :class => icon
-        li_content = tag_for(item,li_icon)
-      else
-        li_content = tag_for(item,nil)
-      end
-
-      list << content_tag(:li, li_content, li_options)
-    end
-  end
-
-  def render_sub_navigation_for(item)
-    self.options[:sub] = true
-    item.sub_navigation.render(self.options)
   end
 
   def image_tag(url,title)
@@ -92,20 +61,11 @@ class CustomBreadcrumbs < SimpleNavigation::Renderer::Base
     options[:id] ? options[:id] : item_container.dom_id
   end
   def tag_for(item,icon=nil)
-    if !icon.nil?
-      if item.url.nil?
-        icon + item.name
-      else
-        link_to(icon + item.name, item.url, link_options_for(item).except(:method, :icon, :image))
-      end
+    if item.url.nil?
+      content_tag('span', item.name, link_options_for(item).except(:method, :icon, :image))
     else
-      if item.url.nil?
-        content_tag('span', item.name, link_options_for(item).except(:method, :icon, :image))
-      else
-        link_to(item.name, item.url, link_options_for(item).except(:method, :icon, :image))
-      end
+      link_to(item.name, item.url, link_options_for(item).except(:method, :icon, :image))
     end
-
   end
   def link_options_for(item)
     if options[:allow_classes_and_ids]

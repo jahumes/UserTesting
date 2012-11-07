@@ -1,12 +1,7 @@
-<div class="formRow">
-  <div class="grid2">
-    <label class="string required control-label" for="user_first_name"><abbr title="required">*</abbr> Name</label>
-  </div>
-  <%= f.input :first_name, :class => 'grid5', :wrapper_class => 'grid5', :wrapper => :multi_input, :placeholder => "First Name" %>
 
-  <%= f.input :last_name, :class => 'grid5', :wrapper_class => 'grid5', :wrapper => :multi_input, :placeholder => "Last Name" %>
-  <div class="clear"></div>
-</div>
+  <%= f.input :first_name, :placeholder => "First Name" %>
+
+  <%= f.input :last_name, :placeholder => "Last Name" %>
 
 
 <%= f.input :email, :placeholder => "Your Email" %>
