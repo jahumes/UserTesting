@@ -7,6 +7,11 @@ gem 'jquery-rails'
 gem "thin", ">= 1.4.1"
 #gem 'navigasmic'
 gem 'simple-navigation'
+
+gem "therubyracer", ">= 0.10.2", :group => :assets, :platform => :ruby
+gem "less-rails"
+gem 'twitter-bootstrap-rails'
+
 gem 'simple_form'
 gem 'country_select'
 gem 'validates_email_format_of', :git => 'git://github.com/alexdunae/validates_email_format_of.git'
@@ -49,4 +54,3 @@ gem "cucumber-rails", ">= 1.3.0", :group => :test, :require => false
 gem "database_cleaner", ">= 0.8.0", :group => :test
 gem "launchy", ">= 2.1.2", :group => :test
 
-gem "therubyracer", ">= 0.10.2", :group => :assets, :platform => :ruby

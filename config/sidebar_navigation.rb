@@ -49,8 +49,10 @@ SimpleNavigation::Configuration.run do |navigation|
     #                            when the item should be highlighted, you can set a regexp which is matched
     #                            against the current URI.  You may also use a proc, or the symbol <tt>:subpath</tt>.
     #
-    primary.item :dashboard, 'Dashboard', '/dashboard', :image => '/assets/icons/mainnav/dashboard.png', :highlights_on => :subpath
-    primary.item :users, 'Users', users_path, :image => '/assets/icons/mainnav/ui.png', :icon => 'icon-users', :highlights_on => :subpath do |users|
+    primary.item :general, 'General', '/dashboard', :icon => 'icon-users', :highlights_on => :subpath do |general|
+      general.item :dashboard, 'Dashboard', '/dashboard', :icon => 'icon-users'
+    end
+    primary.item :users, 'Users', users_path, :icon => 'icon-users', :highlights_on => :subpath do |users|
       users.item :add_new, 'All Users', users_path, :icon => 'icon-users'
       users.item :add_new, 'Add New', new_user_path, :icon => 'icon-contact'
     end

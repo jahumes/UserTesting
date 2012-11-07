@@ -1,0 +1,13 @@
+/**
+ * application-all.css
+ *
+ *= require_self
+ *= require all/bootstrap.min
+ *= require all/jui/jquery-ui
+ *= require all/jui/jquery-ui-timepicker
+ *= require all/js-plugins/uniform.default
+ *= require all/js-plugins/jquery.ibutton.css
+ *= require all/js-plugins/fullcalendar
+ *= require all/fonts/icomoon/style
+ *= require_tree ./all/main-style
+ */

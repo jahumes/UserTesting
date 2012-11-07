@@ -1,17 +1,38 @@
-<!-- Top line begins -->
-<div id="top">
-  <div class="wrapper">
-    <a href="/" title="" class="logo"><%= image_tag 'logo.png' %></a>
-
-    <!-- Right top nav -->
-    <div class="topNav">
-      <ul class="userNav">
-        <li><a href="/" title="Home" class="home"></a></li>
-
-        <%= render 'devise/menu/login_items' %>
-      </ul>
+<header id="header" class="navbar navbar-inverse">
+    <div class="navbar-inner">
+      <div class="container">
+        <div class="brand-wrap pull-left">
+          <div class="brand-img">
+            <a class="brand" href="/"><%= image_tag 'logo.png' %></a>
+          </div>
+        </div>
+        <div id="header-right" class="clearfix">
+            <div id="nav-toggle" class="collapsed" data-target="#navigation" data-toggle="collapse">
+              <i class="icon-caret-down"></i>
+            </div>
+            <div id="header-functions" class="pull-right">
+              <div id="user-info" class="clearfix">
+                                <span class="info">
+                                	Welcome
+                                    <span class="name">Shana-chan</span>
+                                </span>
+                <div class="avatar">
+                  <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                    <img src="/assets/pp.jpg" alt="Avatar">
+                  </a>
+                  <ul class="dropdown-menu pull-right">
+                    <li><a href="profile.html"><i class="icol-user"></i> My Profile</a></li>
+                    <li><a href="#"><i class="icol-layout"></i> My Invoices</a></li>
+                    <li class="divider"></li>
+                    <li><a href="index.html"><i class="icol-key"></i> Logout</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div id="logout-ribbon">
+                <a href="/logout"><i class="icon-off"></i></a>
+              </div>
+            </div>
+        </div>
+      </div>
     </div>
-    <div class="clear"></div>
-  </div>
-</div>
-<!-- Top line ends -->
+</header>
