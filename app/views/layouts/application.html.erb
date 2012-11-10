@@ -21,6 +21,7 @@
     <div id="wrapper">
       <%= render :partial => 'header' %>
       <div id="content-wrap">
+        <div id="content">
          <div id="content-outer">
            <div id="content-inner">
              <%= render :partial => 'sidebar' %>
@@ -29,15 +30,19 @@
                 <div id="main-header" class="page-header">
                     <%= render_navigation :renderer => :custom_breadcrumbs, :context => :sidebar, :class => 'breadcrumb'  %>
                   <h1 id="main-heading">
-                    <%= content_for?(:title) ? yield(:title) : "Usertesting" %>
+                    <%= content_for?(:h1) ? yield(:h1) : "Sebo Marketing" %>
                   </h1>
                 </div>
-                <%= render 'layouts/messages' %>
-                <%= yield %>
+               <div id="main-content">
+                 <%= render 'layouts/messages' %>
+                 <%= yield %>
+               </div>
+
              </section>
 
            </div>
          </div>
+          </div>
       </div>
       <%= render :partial => 'footer' %>
     </div>

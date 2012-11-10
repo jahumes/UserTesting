@@ -1,23 +1,29 @@
-<table cellpadding="0" cellspacing="0" width="100%" class="tDefault checkAll tMedia" id="checkAll">
+
+<table cellpadding="0" cellspacing="0" width="100%" class="table table-striped table-flipscroll" id="users">
   <thead>
-      <tr>
-        <td><img src="/assets/elements/other/tableArrows.png" alt="" /></td>
-        <%= sortable "id", :html_options => {:width => 50} %>
-        <%= sortable "last_name", :title => 'Name' %>
-        <%= sortable "email" %>
-        <%= sortable "created_at", :html_options => {:width => 130} %>
-        <td width="120">Roles</td>
-        <td width="100">Actions</td>
-      </tr>
+  <tr>
+    <td><img src="/assets/elements/other/tableArrows.png" alt="" /></td>
+    <%= sortable "id", :html_options => {:width => 50} %>
+    <%= sortable "last_name", :title => 'Name' %>
+    <%= sortable "email" %>
+    <%= sortable "created_at", :html_options => {:width => 130} %>
+    <td width="120">Roles</td>
+    <td width="100">Actions</td>
+  </tr>
   </thead>
   <tfoot>
   <tr>
-    <td colspan="6">
-      <div class="tPages">
-          <%= paginate @users,
-                       :theme => 'pagelist'
-          %>
+    <td colspan="7">
+      <div class="row-fluid">
+        <div class="span10 offset2">
+          <div class="pagination bootstrap_pagination pull-right">
+            <%= paginate @users,
+                         :theme => 'pagelist'
+            %>
+          </div>
+        </div>
       </div>
+
     </td>
   </tr>
   </tfoot>
@@ -30,21 +36,25 @@
         <td class="textL"><%= link_to user.email, user %></td>
         <td><%= user.created_at.strftime("%b %d, %Y %I:%M:%S %p") %></td>
         <td>
-          <ul>
+          <ul class="unstyled">
             <% user.roles.each do |role| %>
                 <li><%= role.name.titleize %></li>
             <% end %>
           </ul>
         </td>
-        <td class="tableActs">
-          <%= link_to raw('<span class="iconb" data-icon="&#xe1db;"></span>'), edit_user_path(user), :title => 'Edit User', :class => 'tablectrl_small bDefault tipS' %>
-          <%= link_to_unless user == current_user, raw('<span class="iconb" data-icon="&#xe136;"></span>'), user, :method => :delete,
-                                     confirm: 'Are you sure?',
-                                     remote: true,
-                                     title: 'Remove ' + user.first_name + ' ' + user.last_name,
-                                     class: 'tablectrl_small bDefault tipS delete_user'
-          %>
-          <a href="#" class="tablectrl_small bDefault tipS" title="Options"><span class="iconb" data-icon="&#xe1f7;"></span></a>
+        <td class="action-col">
+          <span class="btn-group">
+            <%= link_to raw('<i class="icon-search"></i>'), user_path(user), :title => 'View Profile', :class => 'btn btn-small' %>
+            <%= link_to raw('<i class="icon-pencil"></i>'), edit_user_path(user), :title => 'Edit User', :class => 'btn btn-small' %>
+            <%= link_to_unless user == current_user, raw('<i class="icon-trash"></i>'), user, :method => :delete,
+                               confirm: "Are you sure you want to delete '#{user.first_name} #{user.last_name}'?",
+                               remote: true,
+                               data: { 'script' => '/users'},
+                               title: "Remove #{user.first_name} #{user.last_name}",
+                               class: "btn btn-small delete_user"
+            %>
+          </span>
+
         </td>
       </tr>
   <% end %>

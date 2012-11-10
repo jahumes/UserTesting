@@ -8,9 +8,8 @@ gem "thin", ">= 1.4.1"
 #gem 'navigasmic'
 gem 'simple-navigation'
 
-gem "therubyracer", ">= 0.10.2", :group => :assets, :platform => :ruby
-gem "less-rails"
-gem 'twitter-bootstrap-rails'
+#gem 'less-rails-bootstrap'
+
 
 gem 'simple_form'
 gem 'country_select'
@@ -24,6 +23,10 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
+
+  gem "therubyracer", :platform => :ruby
+  gem "less-rails"
+  gem 'twitter-bootstrap-rails'
 end
 
 group :production do

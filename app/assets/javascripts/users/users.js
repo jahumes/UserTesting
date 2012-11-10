@@ -21,4 +21,7 @@ $(function() {
     $('.delete_user').on('ajax:success', function() {
         $.getScript('/users');
     });
+    $('select.multiple-token').chosen({
+        width: '100%'
+    });
 });

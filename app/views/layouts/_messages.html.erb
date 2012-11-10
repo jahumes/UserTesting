@@ -1,5 +1,5 @@
 <% flash.each do |name, msg| %>
-  <div class="nNote <%= name == :notice ? "nSuccess" : "nFailure" %>">
-    <%= content_tag :p, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+  <div class="alert <%= name == :notice ? "alert-success" : "alert-danger" %>">
+    <%= content_tag :span, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
   </div>
 <% end %>

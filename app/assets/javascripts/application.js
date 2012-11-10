@@ -6,6 +6,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require js-plugins/jquery.chosen
 //= require bootstrap.min
 //= require libs/jquery.placeholder.min
 //= require libs/jquery.mousewheel.min
@@ -20,4 +21,6 @@
 //= require js-plugins/datatables/jquery.dataTables.min
 //= require js-plugins/datatables/TableTools/TableTools.min
 //= require js-plugins/datatables/dataTables.bootstrap
+//= require_tree ./users
+//= require_tree ./custom
 
