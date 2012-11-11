@@ -21,9 +21,10 @@
                     <img src="/assets/pp.jpg" alt="Avatar">
                   </a>
                   <ul class="dropdown-menu pull-right">
-                    <li><a href="<%= user_path(current_user) %>"><i class="icol-user"></i> My Profile</a></li>
+                    <li><a href="<%= user_path(current_user) %>"><i class="icon-user"></i> My Profile</a></li>
+                    <li><a href="<%= edit_user_path(current_user) %>"><i class="icon-user"></i> Edit Account</a></li>
                     <li class="divider"></li>
-                    <li><a href="/logout"><i class="icol-key"></i> Logout</a></li>
+                    <li><a href="/logout"><i class="icon-off"></i> Logout</a></li>
                   </ul>
                 </div>
               </div>

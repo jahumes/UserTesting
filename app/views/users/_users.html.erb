@@ -53,6 +53,7 @@
                                title: "Remove #{user.first_name} #{user.last_name}",
                                class: "btn btn-small delete_user"
             %>
+            <%= content_tag :span,raw('<i class="icon-trash"></i>'), :class => 'btn btn-small disabled' if user == current_user %>
           </span>
 
         </td>

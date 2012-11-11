@@ -15,8 +15,16 @@ namespace :db do
                     :email => email,
                     :password => password,
                     :password_confirmation => password_confirmation)
-      if( n%2 == 0)
+      if( (n + 5)%5 == 0)
         user.add_role(:admin)
+      elsif( (n + 4)%5 == 0 )
+        user.add_role(:executive)
+      elsif( (n + 3)%5 == 0 )
+        user.add_role(:manager)
+      elsif( (n + 2)%5 == 0 )
+        user.add_role(:team_member)
+      elsif( (n + 1)%5 == 0 )
+        user.add_role(:designer)
       end
     end
   end

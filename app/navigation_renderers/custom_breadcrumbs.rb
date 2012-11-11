@@ -9,7 +9,7 @@ class CustomBreadcrumbs < SimpleNavigation::Renderer::Base
   def render(item_container)
 
     list_content = content_tag(:li, content_tag(:i, nil, :class => 'icon-home') + 'Sebo Marketing' + content_tag(:span,'&raquo;',:class => 'divider')) << li_tags(item_container).join.html_safe
-    d { list_content }
+
     if skip_if_empty? && item_container.empty?
       ''
     else

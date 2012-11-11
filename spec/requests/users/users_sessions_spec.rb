@@ -6,8 +6,8 @@ describe "Users::Sessions" do
   describe 'Login page' do
     before { visit new_user_session_path }
 
-    it { should have_selector( 'input#user_email' ) }
-    it { should have_selector( 'input#user_password' ) }
+    it { should have_selector( 'input#input-username' ) }
+    it { should have_selector( 'input#input-password' ) }
     it { should have_selector( 'input[name=commit]' ) }
 
   end
@@ -19,34 +19,34 @@ describe "Users::Sessions" do
       before { click_button "Login" }
 
 
-      it { should have_selector('title', text: 'Login') }
-      it { should have_selector('div.nFailure', text: 'Invalid email or password') }
+      it { should have_selector('h1', text: 'Login') }
+      it { should have_selector('div.alert-danger', text: 'Invalid email or password') }
       describe "after visiting another page" do
-        before { click_link "Home" }
-        it { should_not have_selector('div.nFailure') }
+        before { visit new_user_session_path }
+        it { should_not have_selector('div.alert-danger') }
       end
     end
-    describe "width valid information" do
+    describe "with valid information" do
       let(:user) { FactoryGirl.create(:user) }
       before do
         visit new_user_session_path
-        fill_in("user_email", :with => user.email)
-        fill_in("user_password", :with => "please")
+        fill_in("input-username", :with => user.email)
+        fill_in("input-password", :with => "please")
         click_button("Login")
       end
 
       describe 'it should have good links' do
 
         it { should have_link('Logout', href: destroy_user_session_path ) }
-        it { should have_link('User Settings', href: edit_user_registration_path ) }
-        it { should have_link('Home', href: user_session_path ) }
+        it { should have_link('Edit Account', href: edit_user_path(user.id) ) }
+        it { should have_link('My Profile', href: user_path(user.id) ) }
       end
       describe "followed by logout" do
         before { click_link "Logout" }
-        it { should have_selector('input#user_email') }
-        it { should have_selector('div.nSuccess', text: 'Signed out successfully.') }
+        it { should have_selector('input#input-username') }
+        it { should have_selector('div.alert-info', text: 'Signed out successfully.') }
         it { should_not have_link('Logout', href: destroy_user_session_path ) }
-        it { should_not have_link('User Settings', href: edit_user_registration_path ) }
+        it { should_not have_link('Edit Account', href: edit_user_path(user.id) ) }
       end
     end
   end

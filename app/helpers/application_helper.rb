@@ -19,4 +19,14 @@ module ApplicationHelper
     direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
     content_tag :td, (link_to args[:title], params.merge(:sort => column, :direction => direction, :page => nil)), html_options
   end
+  def alert_type(name)
+    case name
+      when :alert
+        "alert-danger"
+      when :notice
+        "alert-info"
+      else
+        "alert-success"
+    end
+  end
 end

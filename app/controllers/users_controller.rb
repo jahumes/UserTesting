@@ -22,10 +22,17 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to(users_url) }
-      format.js { render :text => {} }
+    if @user.update_attributes(params[:user])
+      if @user == current_user
+        flash[:success] = "You updated your account successfully!"
+      else
+        flash[:success] = "User Successfully Updated!"
+      end
+
+      redirect_to @user
+    else
+      flash[:error] = "Failed to Update User!"
+      render 'edit'
     end
   end
 

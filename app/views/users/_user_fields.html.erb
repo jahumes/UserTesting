@@ -19,5 +19,5 @@
 
 <%= f.input :password_confirmation, :placeholder => "Confirm Password" %>
 
-<%= f.association :roles, :collection => Role.all.reject{ |r| r.name == 'normal' },:input_html => {:class => 'fullwidth multiple-token', 'data-placeholder' => 'Click or Type to Select User Roles'} %>
+<%= f.association :roles, :collection => Role.all,:label_method => lambda { |role| role.name.titleize },:input_html => {:class => 'fullwidth multiple-token', 'data-placeholder' => 'Click or Type to Select User Roles'} %>
 

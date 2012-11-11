@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   before_create :set_default_roles
+  before_update :set_default_roles
   rolify
+
+  delegate :can?, :cannot?, :to => :ability
 
   has_and_belongs_to_many :roles, :join_table => :users_roles
 
@@ -15,8 +18,13 @@ class User < ActiveRecord::Base
 
   validates :first_name, :presence => true
   validates :last_name, :presence => true
-  validates :password, :presence => true, :confirmation => true
-  validates :password_confirmation, :presence => true
+  validates :password,
+            :presence => true,
+            :length => {:within => 6..40},
+            :on => :create,
+            :confirmation => true,
+            :if => lambda{ new_record? || !password.nil? }
+  validates :password_confirmation, :presence => true, :on => :create
   validates :email, :presence => true
   validates_email_format_of :email
 
@@ -35,12 +43,20 @@ class User < ActiveRecord::Base
     end
   end
 
+  def current_ability
+    current_user.ability
+  end
+
+  protected
+    def password_required?
+      false
+    end
+
   private
     def set_default_roles
       if !Role.find_by_name('normal').nil?
         self.roles << Role.find_by_name('normal')
       end
-
     end
 
 end
