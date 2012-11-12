@@ -3,7 +3,7 @@
   <thead>
   <tr>
     <td><img src="/assets/elements/other/tableArrows.png" alt="" /></td>
-    <%= sortable "id", :html_options => {:width => 50} %>
+    <%= sortable "id", :title => 'ID', :html_options => {:width => 50} %>
     <%= sortable "last_name", :title => 'Name' %>
     <%= sortable "email" %>
     <%= sortable "created_at", :html_options => {:width => 130} %>
@@ -32,8 +32,8 @@
       <tr>
         <td><input type="checkbox" name="checkRow" /></td>
         <td><%= user.id %></td>
-        <td class="textL"><%= link_to user.last_name + ', ' + user.first_name, user %></td>
-        <td class="textL"><%= link_to user.email, user %></td>
+        <td class="textL"><%= link_to user.name_reversed, user %></td>
+        <td class="textL"><%= user.email %></td>
         <td><%= user.created_at.strftime("%b %d, %Y %I:%M:%S %p") %></td>
         <td>
           <ul class="unstyled">

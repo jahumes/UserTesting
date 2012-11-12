@@ -18,7 +18,7 @@ describe UsersController do
 
       it "should have the right title" do
         get :new
-        response.body.should have_selector(:title,'Add New User')
+        response.body.should have_selector('.title','Add New User')
       end
     end
 

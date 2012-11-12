@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  before_create :set_default_roles
-  before_update :set_default_roles
+  #before_create :set_default_roles
+  #before_update :set_default_roles
   rolify
 
   delegate :can?, :cannot?, :to => :ability
@@ -45,6 +45,14 @@ class User < ActiveRecord::Base
 
   def current_ability
     current_user.ability
+  end
+
+  def name
+    [first_name, last_name].join " "
+  end
+
+  def name_reversed
+    [last_name, first_name].join ", "
   end
 
   protected
